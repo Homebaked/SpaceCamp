@@ -1,5 +1,4 @@
-﻿using OpenTK;
-using System;
+﻿using System;
 
 namespace SpaceCamp
 {
@@ -7,7 +6,7 @@ namespace SpaceCamp
     {
         static void Main(string[] args)
         {
-            GameWindow game = new GameWindow();
+            SpaceCamp game = new SpaceCamp();
             game.Run(60);
         }
     }
