@@ -1,21 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using SpaceEngine.Interfaces;
 
 namespace SpaceEngine.Models
 {
     public class Building : Entity, Clickable
     {
-        public Building(int x, int y, int size, Color color) : base(x, y, size, size, color) { }
+        public Building(int x, int y, int size, Color color, GraphicsDevice graphics) : base(x, y, size, size, color, graphics) { }
 
         override public void Step()
         {
             //Do nothing
         }
 
-        override public void Draw(Graphics graphics)
+        override public void Draw(SpriteBatch sb)
         {
-            graphics.FillRectangle(new SolidBrush(Color), Rect);
+            
         }
 
         public void HandleClick()

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using SpaceEngine.Utilities;
 
 namespace SpaceEngine.Models
 {
@@ -9,7 +12,7 @@ namespace SpaceEngine.Models
         public double Speed { get; protected set; }
         public Vector2 Destination { get; protected set; }
 
-        public Unit(int x, int y, double speed, int size, Color color) : base(x, y, size, size, color)
+        public Unit(int x, int y, double speed, int size, Color color, GraphicsDevice graphics) : base(x, y, size, size, color, graphics)
         {
             Speed = speed;
 
@@ -34,9 +37,10 @@ namespace SpaceEngine.Models
 
         }
 
-        override public void Draw(Graphics graphics)
+        override public void Draw(SpriteBatch sb)
         {
-            graphics.FillRectangle(new SolidBrush(Color), Rect);
+            Texture.SetData(HelperMethods.GenerateColorData(Color, Texture));
+            sb.Draw(Texture, Position, Color);
         }
 
         public void AssignDestination(Vector2 destination)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,28 +14,16 @@ namespace SpaceEngine.Models
             Objects = new List<GameObject>();
         }
 
-        public override void Draw(Graphics graphics)
+        public override void Draw(SpriteBatch sb)
         {
             foreach (GameObject ob in Objects)
             {
-                ob.Draw(graphics);
+                ob.Draw(sb);
             }
         }
 
-        public bool HandleClick(MouseEventArgs args)
+        public bool HandleClick()
         {
-            foreach (GameObject ob in Objects)
-            {
-                if (ob is Clickable)
-                {
-                    bool clicked = (ob as Clickable).Rect.Contains(args.Location);
-                    if (clicked)
-                    {
-                        (ob as Clickable).HandleClick();
-                        return true;
-                    }
-                }
-            }
             return false;
         }
 

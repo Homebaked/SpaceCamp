@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using SpaceEngine.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,17 +9,19 @@ namespace SpaceEngine.Models
 {
     public class GridSquare
     {
-        public Rectangle Rect { get; private set; }
+        public Texture2D Texture { get; private set; }
+        public Vector2 Position { get; private set; }
 
-        public GridSquare(int x, int y, int length)
+        public GridSquare(int x, int y, int length, GraphicsDevice graphics)
         {
-            Rect = new Rectangle(x, y, length, length);
+            Texture = new Texture2D(graphics, length, length);
+            Position = new Vector2(x, y);
         }
 
-        public void Draw(Graphics graphics)
+        public void Draw(SpriteBatch sb)
         {
-            graphics.FillRectangle(Pens.White.Brush, Rect);
-            graphics.DrawRectangle(Pens.Black, Rect);
+            Texture.SetData(HelperMethods.GenerateColorData(Color.Black, Texture));
+            sb.Draw(Texture, Position, Color.White);
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceEngine.Interfaces
 {
     interface Clickable
     {
-        Rectangle Rect { get; }
+        Texture2D Texture { get; }
 
         void HandleClick();
     }

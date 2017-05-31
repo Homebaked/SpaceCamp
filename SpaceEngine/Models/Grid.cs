@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -25,24 +26,24 @@ namespace SpaceEngine.Models
             }
         }
 
-        public Grid(int width, int height, int squareLength)
+        public Grid(int width, int height, int squareLength, GraphicsDevice graphics)
         {
             Width = width;
             Height = height;
             SquareLength = squareLength;
 
-            initializeSquares();
+            initializeSquares(graphics);
         }
 
-        override public void Draw(Graphics graphics)
+        override public void Draw(SpriteBatch sb)
         {
             foreach (GridSquare square in SquaresList)
             {
-                square.Draw(graphics);
+                square.Draw(sb);
             }
         }
 
-        private void initializeSquares()
+        private void initializeSquares(GraphicsDevice graphics)
         {
             SquaresMatrix = new List<List<GridSquare>>();
             for (int x = 0; x < Width; x += SquareLength)
@@ -50,7 +51,7 @@ namespace SpaceEngine.Models
                 List<GridSquare> column = new List<GridSquare>();
                 for (int y = 0; y < Height; y += SquareLength)
                 {
-                    GridSquare square = new GridSquare(x, y, SquareLength);
+                    GridSquare square = new GridSquare(x, y, SquareLength, graphics);
                     column.Add(square);
                 }
                 SquaresMatrix.Add(column);

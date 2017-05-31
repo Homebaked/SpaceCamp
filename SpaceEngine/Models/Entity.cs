@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceEngine.Models
 {
@@ -8,35 +7,18 @@ namespace SpaceEngine.Models
     {
         #region Properties
 
-        public Rectangle Rect { get; protected set; }
+        public Texture2D Texture { get; protected set; }
 
-        private Vector2 _position;
-        public Vector2 Position
-        {
-            get
-            {
-                return _position;
-            }
-            protected set
-            {
-                _position = value;
-                Rect = new Rectangle((int)_position.X, (int)_position.Y, Rect.Width, Rect.Height);
-            }
-        }
+        public Vector2 Position { get; protected set; }
 
         public Color Color { get; protected set; }
         #endregion
 
         #region Constructors
-        protected Entity(int x, int y, int width, int height, Color color)
+        protected Entity(int x, int y, int width, int height, Color color, GraphicsDevice graphics)
         {
-            Rect = new Rectangle(x, y, width, height);
+            Texture = new Texture2D(graphics, width, height);
             Color = color;
-        }
-
-        protected Entity(Rectangle rect)
-        {
-            Rect = rect;
         }
         #endregion
 

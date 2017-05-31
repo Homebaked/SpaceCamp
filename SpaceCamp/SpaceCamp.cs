@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SpaceEngine.Models;
 
 namespace SpaceCamp
 {
@@ -9,9 +10,29 @@ namespace SpaceCamp
     /// </summary>
     public class SpaceCamp : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        
+
+        #region Properties
+
+        private Grid grid;
+
+        private Layer uiLayer;
+        private Layer foregroundLayer;
+        private Layer backgroundLayer;
+
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+
+        private int screenWidth
+        {
+            get { return GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width; }
+        }
+        private int screenHeight
+        {
+            get { return GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height; }
+        }
+
+#endregion
+
         public SpaceCamp()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -27,6 +48,7 @@ namespace SpaceCamp
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            grid = new Grid(screenWidth, screenHeight, 20, graphics.GraphicsDevice);
 
             base.Initialize();
         }
@@ -75,7 +97,11 @@ namespace SpaceCamp
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            grid.Draw(spriteBatch);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

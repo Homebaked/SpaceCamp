@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceEngine.Models
 {
     abstract public class GameObject
     {
-        abstract public void Draw();
+        abstract public void Draw(SpriteBatch sb);
     }
 }
