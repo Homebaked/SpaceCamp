@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SpaceEngine.Models;
 
 namespace SpaceCamp.Models
 {
@@ -8,6 +9,7 @@ namespace SpaceCamp.Models
     {
         public Robot(int x, int y, double speed, int size) : base(x, y, speed, size, Color.Gray)
         {
+
         }
     }
 }

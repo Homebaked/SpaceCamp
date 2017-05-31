@@ -2,12 +2,19 @@
 
 namespace SpaceCamp
 {
-    class Program
+    /// <summary>
+    /// The main class.
+    /// </summary>
+    public static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            SpaceCamp game = new SpaceCamp();
-            game.Run(60);
+            using (var game = new SpaceCamp())
+                game.Run();
         }
     }
 }
