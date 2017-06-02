@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SpaceCamp.Models;
 using SpaceEngine.Models;
+using System.Collections.Generic;
 
 namespace SpaceCamp
 {
@@ -19,24 +21,38 @@ namespace SpaceCamp
         private Layer foregroundLayer;
         private Layer backgroundLayer;
 
+        private List<Entity> entities;
+
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
         private int screenWidth
         {
             get { return GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width; }
+            set
+            {
+                graphics.PreferredBackBufferWidth = value;
+                graphics.ApplyChanges();
+            }
         }
         private int screenHeight
         {
             get { return GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height; }
+            set
+            {
+                graphics.PreferredBackBufferHeight = value;
+                graphics.ApplyChanges();
+            }
         }
 
 #endregion
 
-        public SpaceCamp()
+        public SpaceCamp(int width, int height)
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            screenWidth = width;
+            screenHeight = height;
         }
 
         /// <summary>
@@ -47,8 +63,21 @@ namespace SpaceCamp
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            entities = new List<Entity>();
+            initializeLayers();
+
             grid = new Grid(screenWidth, screenHeight, 20, graphics.GraphicsDevice);
+
+            Robot robot = new Robot(0, 0, 2, 20, graphics.GraphicsDevice);
+            robot.AssignDestination(new Vector2(500, 500));
+            entities.Add(robot);
+
+            Rocket rocket = new Rocket(300, 300, 40, 0, graphics.GraphicsDevice);
+            entities.Add(rocket);
+
+            backgroundLayer.Add(grid);
+            foregroundLayer.Add(robot);
+            foregroundLayer.Add(rocket);
 
             base.Initialize();
         }
@@ -84,7 +113,10 @@ namespace SpaceCamp
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            foreach(Entity entity in entities)
+            {
+                entity.Step();
+            }
 
             base.Update(gameTime);
         }
@@ -95,15 +127,24 @@ namespace SpaceCamp
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
 
-            grid.Draw(spriteBatch);
+            backgroundLayer.Draw(spriteBatch);
+            foregroundLayer.Draw(spriteBatch);
+            uiLayer.Draw(spriteBatch);
 
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        protected void initializeLayers()
+        {
+            backgroundLayer = new Layer();
+            foregroundLayer = new Layer();
+            uiLayer = new Layer();
         }
     }
 }

@@ -14,11 +14,6 @@ namespace SpaceEngine.Models
             //Do nothing
         }
 
-        override public void Draw(SpriteBatch sb)
-        {
-            
-        }
-
         public void HandleClick()
         {
             throw new NotImplementedException();

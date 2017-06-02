@@ -37,12 +37,6 @@ namespace SpaceEngine.Models
 
         }
 
-        override public void Draw(SpriteBatch sb)
-        {
-            Texture.SetData(HelperMethods.GenerateColorData(Color, Texture));
-            sb.Draw(Texture, Position, Color);
-        }
-
         public void AssignDestination(Vector2 destination)
         {
             Destination = destination;
