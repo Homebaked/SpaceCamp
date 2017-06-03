@@ -13,10 +13,5 @@ namespace SpaceEngine.Models
         {
             //Do nothing
         }
-
-        public void HandleClick()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
