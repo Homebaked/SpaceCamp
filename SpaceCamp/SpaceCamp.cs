@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SpaceCamp.Models;
+using SpaceCamp.UI;
 using SpaceEngine.Models;
 using System.Collections.Generic;
 
@@ -17,7 +18,8 @@ namespace SpaceCamp
 
         private Grid grid;
 
-        private Layer uiLayer;
+        private CampUI ui;
+
         private Layer foregroundLayer;
         private Layer backgroundLayer;
 
@@ -25,6 +27,8 @@ namespace SpaceCamp
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+
+        private SpriteFont defaultFont;
 
         private int screenWidth
         {
@@ -45,7 +49,7 @@ namespace SpaceCamp
             }
         }
 
-#endregion
+        #endregion
 
         public SpaceCamp(int width, int height)
         {
@@ -63,10 +67,13 @@ namespace SpaceCamp
         /// </summary>
         protected override void Initialize()
         {
+            base.Initialize();
+
             entities = new List<Entity>();
             initializeLayers();
 
             grid = new Grid(screenWidth, screenHeight, 20, graphics.GraphicsDevice);
+            ui = new CampUI(screenWidth, screenHeight, defaultFont);
 
             Robot robot = new Robot(0, 0, 2, 20, graphics.GraphicsDevice);
             robot.AssignDestination(new Vector2(500, 500));
@@ -79,7 +86,7 @@ namespace SpaceCamp
             foregroundLayer.Add(robot);
             foregroundLayer.Add(rocket);
 
-            base.Initialize();
+            ui.SetSelectedEntity(rocket);
         }
 
         /// <summary>
@@ -91,7 +98,7 @@ namespace SpaceCamp
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            defaultFont = Content.Load<SpriteFont>("Fonts/Default");
         }
 
         /// <summary>
@@ -133,7 +140,7 @@ namespace SpaceCamp
 
             backgroundLayer.Draw(spriteBatch);
             foregroundLayer.Draw(spriteBatch);
-            uiLayer.Draw(spriteBatch);
+            ui.Draw(spriteBatch);
 
             spriteBatch.End();
 
@@ -144,7 +151,6 @@ namespace SpaceCamp
         {
             backgroundLayer = new Layer();
             foregroundLayer = new Layer();
-            uiLayer = new Layer();
         }
     }
 }

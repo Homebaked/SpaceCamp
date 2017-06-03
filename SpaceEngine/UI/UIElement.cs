@@ -16,13 +16,14 @@ namespace SpaceEngine.UI
         public UIElement(Rectangle rect)
         {
             Rect = rect;
+            Elements = new List<UIElement>();
         }
 
         public virtual void Draw(SpriteBatch sb)
         {
             foreach(UIElement element in Elements)
             {
-                Draw(sb);
+                element.Draw(sb);
             }
         }
     }

@@ -9,10 +9,9 @@ namespace SpaceEngine.Models
     {
         #region Properties
 
+        public string Name { get; protected set; }
         public Texture2D Texture { get; protected set; }
-
         public Vector2 Position { get; protected set; }
-
         public Color Color { get; protected set; }
         #endregion
 
