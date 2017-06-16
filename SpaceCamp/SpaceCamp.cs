@@ -13,7 +13,7 @@ namespace SpaceCamp
     /// </summary>
     public class SpaceCamp : Game
     {
-        //Test
+        //Another
         #region Properties
 
         private Grid grid;
