@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GeonBit.UI;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SpaceCamp.Models;
-using SpaceCamp.UI;
 using SpaceEngine.Models;
 using System.Collections.Generic;
 
@@ -18,8 +18,6 @@ namespace SpaceCamp
 
         private Grid grid;
 
-        private CampUI ui;
-
         private Layer foregroundLayer;
         private Layer backgroundLayer;
 
@@ -29,6 +27,8 @@ namespace SpaceCamp
         private SpriteBatch spriteBatch;
 
         private SpriteFont defaultFont;
+
+        private UserInterface ui;
 
         private int screenWidth
         {
@@ -73,7 +73,6 @@ namespace SpaceCamp
             initializeLayers();
 
             grid = new Grid(screenWidth, screenHeight, 20, graphics.GraphicsDevice);
-            ui = new CampUI(screenWidth, screenHeight, defaultFont);
 
             Robot robot = new Robot(0, 0, 2, 20, graphics.GraphicsDevice);
             robot.AssignDestination(new Vector2(500, 500));
@@ -85,8 +84,6 @@ namespace SpaceCamp
             backgroundLayer.Add(grid);
             foregroundLayer.Add(robot);
             foregroundLayer.Add(rocket);
-
-            ui.SetSelectedEntity(rocket);
         }
 
         /// <summary>
