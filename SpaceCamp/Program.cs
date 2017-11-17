@@ -13,7 +13,7 @@ namespace SpaceCamp
         [STAThread]
         static void Main()
         {
-            using (var game = new SpaceCamp(1920, 1080))
+            using (var game = new Game1())
                 game.Run();
         }
     }
