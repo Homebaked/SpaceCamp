@@ -50,16 +50,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UserControl1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -89,5 +79,16 @@
   <ItemGroup>
     <Resource Include="BehaviorsLicense.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Root.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>CD "$(SolutionDir)packages\EmptyKeysUI_Generator*\tools"
+
+ekUIGen.exe -i="$(ProjectDir)\" -o="$(ProjectDir)..\SpaceEngine\GeneratedUI" -oa="$(ProjectDir)..\SpaceCamp\Content" -bd="$(TargetDir)\" -rm=MonoGame</PostBuildEvent>
+  </PropertyGroup>
 </Project>

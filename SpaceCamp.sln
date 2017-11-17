@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceCamp", "SpaceCamp\SpaceCamp.csproj", "{8F21FEED-59CA-450E-859E-30C0F4774607}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71D97822-75CF-48F3-BD35-EF2BA6792B03} = {71D97822-75CF-48F3-BD35-EF2BA6792B03}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceEngine", "SpaceEngine\SpaceEngine.csproj", "{666B869F-E8C6-4C2B-91A4-495C3077585D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71D97822-75CF-48F3-BD35-EF2BA6792B03} = {71D97822-75CF-48F3-BD35-EF2BA6792B03}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceInterface", "SpaceInterface\SpaceInterface.csproj", "{71D97822-75CF-48F3-BD35-EF2BA6792B03}"
 EndProject
