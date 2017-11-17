@@ -134,7 +134,7 @@
     </None>
     <None Include="app.config" />
     <None Include="app.manifest" />
-    <None Include="Content\Content.mgcb" />
+    <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

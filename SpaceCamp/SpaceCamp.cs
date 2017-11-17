@@ -1,8 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using EmptyKeys.UserInterface;
+using EmptyKeys.UserInterface.Generated;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SpaceCamp.Models;
 using SpaceEngine.Models;
+using System;
 using System.Collections.Generic;
 
 namespace SpaceCamp
@@ -14,7 +17,7 @@ namespace SpaceCamp
     {
         //Another
         #region Properties
-
+        private Root root;
         private Grid grid;
 
         private Layer foregroundLayer;
@@ -49,9 +52,26 @@ namespace SpaceCamp
         public SpaceCamp(int width, int height)
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.DeviceCreated += graphicsDeviceCreated;
+            graphics.PreparingDeviceSettings += graphicsPreparingDeviceSettings;
             Content.RootDirectory = "Content";
             screenWidth = width;
             screenHeight = height;
+            IsMouseVisible = true;
+        }
+
+        private void graphicsPreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
+        {
+            graphics.PreferMultiSampling = true;
+            graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            graphics.SynchronizeWithVerticalRetrace = true;
+            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
+            e.GraphicsDeviceInformation.PresentationParameters.MultiSampleCount = 16;
+        }
+
+        private void graphicsDeviceCreated(object sender, EventArgs e)
+        {
+            Engine engine = new MonoGameEngine(GraphicsDevice, screenWidth, screenHeight);
         }
 
         /// <summary>
@@ -90,7 +110,11 @@ namespace SpaceCamp
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //defaultFont = Content.Load<SpriteFont>("Fonts/Default");
+            SpriteFont font = Content.Load<SpriteFont>("Segoe_UI_15_Bold");
+            FontManager.DefaultFont = Engine.Instance.Renderer.CreateFont(font);
+            root = new Root();
+
+            FontManager.Instance.LoadFonts(Content);
         }
 
         /// <summary>
@@ -112,6 +136,9 @@ namespace SpaceCamp
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            root.UpdateInput(gameTime.ElapsedGameTime.TotalMilliseconds);
+            root.UpdateLayout(gameTime.ElapsedGameTime.TotalMilliseconds);
+
             foreach(Entity entity in entities)
             {
                 entity.Step();
@@ -132,6 +159,8 @@ namespace SpaceCamp
 
             backgroundLayer.Draw(spriteBatch);
             foregroundLayer.Draw(spriteBatch);
+
+            root.Draw(gameTime.ElapsedGameTime.TotalMilliseconds);
 
             spriteBatch.End();
 
