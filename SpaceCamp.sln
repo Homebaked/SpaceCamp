@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceCamp", "SpaceCamp\SpaceCamp.csproj", "{8F21FEED-59CA-450E-859E-30C0F4774607}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceEngine", "SpaceEngine\SpaceEngine.csproj", "{666B869F-E8C6-4C2B-91A4-495C3077585D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceInterface", "SpaceInterface\SpaceInterface.csproj", "{71D97822-75CF-48F3-BD35-EF2BA6792B03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{666B869F-E8C6-4C2B-91A4-495C3077585D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{666B869F-E8C6-4C2B-91A4-495C3077585D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{666B869F-E8C6-4C2B-91A4-495C3077585D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D97822-75CF-48F3-BD35-EF2BA6792B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D97822-75CF-48F3-BD35-EF2BA6792B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D97822-75CF-48F3-BD35-EF2BA6792B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D97822-75CF-48F3-BD35-EF2BA6792B03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7562D5EF-C4AB-467C-A4D9-B30182A346A0}
 	EndGlobalSection
 EndGlobal
