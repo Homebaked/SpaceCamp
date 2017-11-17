@@ -38,6 +38,8 @@ namespace SpaceCamp
             Entity robot2 = myScene.createEntity("robot2");
             robot2.addComponent(new Sprite(redRobot));
 
+            robot2.position = new Vector2(200, 200);
+
             scene = myScene;
         }
 

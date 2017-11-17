@@ -94,18 +94,18 @@ namespace Nez
 		}
 
 
-		#if !FNA
-		protected override bool OnApply()
-		{
-			_timeParam.SetValue( Time.time );
-			return false;
-		}
-		#else
+		//#if !FNA
+		//protected override bool OnApply()
+		//{
+		//	_timeParam.SetValue( Time.time );
+		//	return false;
+		//}
+		//#else
 		protected override void OnApply()
 		{
 			_timeParam.SetValue( Time.time );
 		}
-		#endif
+		//#endif
 	}
 }
 
