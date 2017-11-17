@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Nez;
+using Nez.Sprites;
 
 namespace SpaceCamp
 {
@@ -23,9 +24,21 @@ namespace SpaceCamp
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
+
+            Window.AllowUserResizing = true;
+            Scene myScene = Scene.createWithDefaultRenderer(Color.CornflowerBlue);
+
+            Texture2D blueRobot = myScene.content.Load<Texture2D>("images/Robots/Side view/robot_blueDrive1");
+            Texture2D redRobot = myScene.content.Load<Texture2D>("images/Robots/Side view/robot_redDrive1");
+
+            Entity robot1 = myScene.createEntity("robot1");
+            robot1.addComponent(new Sprite(blueRobot));
+
+            Entity robot2 = myScene.createEntity("robot2");
+            robot2.addComponent(new Sprite(redRobot));
+
+            scene = myScene;
         }
 
         /// <summary>
