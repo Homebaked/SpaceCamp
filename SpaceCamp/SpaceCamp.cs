@@ -1,5 +1,4 @@
-﻿using GeonBit.UI;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SpaceCamp.Models;
@@ -25,10 +24,6 @@ namespace SpaceCamp
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-
-        private SpriteFont defaultFont;
-
-        private UserInterface ui;
 
         private int screenWidth
         {
@@ -95,7 +90,7 @@ namespace SpaceCamp
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            defaultFont = Content.Load<SpriteFont>("Fonts/Default");
+            //defaultFont = Content.Load<SpriteFont>("Fonts/Default");
         }
 
         /// <summary>
@@ -137,7 +132,6 @@ namespace SpaceCamp
 
             backgroundLayer.Draw(spriteBatch);
             foregroundLayer.Draw(spriteBatch);
-            ui.Draw(spriteBatch);
 
             spriteBatch.End();
 
