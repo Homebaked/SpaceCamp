@@ -1,22 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Nez;
 
 namespace SpaceCamp
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class Game1 : Core
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         
-        public Game1()
-        {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-        }
+        public Game1() : base() {}
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
