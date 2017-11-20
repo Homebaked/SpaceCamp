@@ -32,20 +32,20 @@ namespace SpaceCamp
             Texture2D blueRobot = gameScene.content.Load<Texture2D>("images/Robots/Side view/robot_blueDrive1");
             Texture2D redRobot = gameScene.content.Load<Texture2D>("images/Robots/Side view/robot_redDrive1");
 
-            Unit robot1 = new Unit(5);
-            Unit robot2 = new Unit(5);
+            Unit robot1 = new Unit(40);
+            //Unit robot2 = new Unit(5);
 
             gameScene.addEntity(robot1);
             robot1.addComponent(new Sprite(blueRobot));
 
-            gameScene.addEntity(robot2);
-            robot2.addComponent(new Sprite(redRobot));
+            //gameScene.addEntity(robot2);
+            //robot2.addComponent(new Sprite(redRobot));
 
-            robot2.position = new Vector2(200, 200);
+            //robot2.position = new Vector2(200, 200);
 
             scene = gameScene;
 
-            robot1.SetDestination(new Vector2(700, 300));
+            robot1.AddDestination(new Vector2(700, 300));
         }
     }
 }

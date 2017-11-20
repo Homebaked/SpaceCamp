@@ -42,7 +42,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Components\UnitMover.cs" />
+    <Compile Include="Components\DestinationMover.cs" />
     <Compile Include="Entities\Unit.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />

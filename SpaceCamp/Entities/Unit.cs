@@ -11,31 +11,24 @@ namespace SpaceCamp.Entities
 {
     public class Unit : Entity
     {
-        private UnitMover mover;
-        private Vector2 destination;
+        private DestinationMover mover;
 
-        public float Speed { get; set; }
+        public float Speed
+        {
+            get { return mover.Speed; }
+            set { mover.Speed = value; }
+        }
 
         public Unit(float speed)
         {
-            Speed = speed;
-            mover = new UnitMover();
+            mover = new DestinationMover();
             this.addComponent(mover);
+            Speed = speed;
         }
 
-        public void SetDestination(Vector2 dest)
+        public void AddDestination(Vector2 dest)
         {
-            destination = dest;
-        }
-
-        public override void update()
-        {
-            Vector2 direction = (destination - position);
-            direction.Normalize();
-            mover.Speed = Speed;
-            mover.Direction = direction;
-
-            base.update();
+            mover.AddDestination(dest);
         }
     }
 }
