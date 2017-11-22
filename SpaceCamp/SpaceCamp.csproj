@@ -42,8 +42,11 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <Compile Include="Components\DestinationMover.cs" />
     <Compile Include="Entities\Unit.cs" />
+=======
+>>>>>>> Stashed changes
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
