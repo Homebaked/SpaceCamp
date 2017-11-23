@@ -20,11 +20,13 @@ namespace SpaceCamp
 	static class Program
 #endif
 	{
-		private static Game1 game;
+        const int SCREEN_WIDTH = 1440, SCREEN_HEIGHT = 900;
+
+        private static SpaceCampGame game;
 
 		internal static void RunGame()
 		{
-			game = new Game1();
+            game = new SpaceCampGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 			game.Run();
 #if !__IOS__ && !__TVOS__
 			game.Dispose();
