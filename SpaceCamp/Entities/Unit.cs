@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nez.Sprites;
 
 namespace SpaceCamp.Entities
 {
@@ -19,8 +20,9 @@ namespace SpaceCamp.Entities
             set { mover.Speed = value; }
         }
 
-        public Unit(float speed)
+        public Unit(string name, Sprite sprite, float speed) : base(name)
         {
+            this.addComponent(sprite);
             mover = new DestinationMover();
             this.addComponent(mover);
             Speed = speed;
