@@ -37,9 +37,12 @@
   <ItemGroup>
     <Compile Include="Components\DestinationMover.cs" />
     <Compile Include="Entities\Unit.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="SpaceCampGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\Grid.cs" />
+    <Compile Include="Entities\Building.cs" />
+    <Compile Include="UI\GridInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.manifest" />
@@ -93,6 +96,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scenes\" />
+    <Folder Include="UI\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
 </Project>
