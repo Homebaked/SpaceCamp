@@ -1,10 +1,14 @@
 ﻿using System;
+using Nez;
+using Nez.Sprites;
+
 namespace SpaceCamp.Entities
 {
-    public class Building
+    public class Building : Entity
     {
-        public Building()
+        public Building(Sprite sprite)
         {
+            this.addComponent(sprite);
         }
     }
 }
