@@ -13,11 +13,11 @@ namespace SpaceCamp
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Core
+    public class SpaceCampGame : Core
     {
         private Grid grid;
 
-        public Game1(int width, int height) : base(width: width, height: height) { }
+        public SpaceCampGame(int width, int height) : base(width: width, height: height) { }
 
         protected override void Initialize()
         {
