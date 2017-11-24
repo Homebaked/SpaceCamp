@@ -15,30 +15,36 @@ namespace SpaceCamp
     /// </summary>
     public class SpaceCampGame : Core
     {
-        private Grid grid;
+        private const int SQUARE_SIZE = 10;
 
-        public SpaceCampGame(int width, int height) : base(width: width, height: height) { }
+        private Grid grid;
+        private int width, height;
+
+        public SpaceCampGame(int width, int height) : base(width: width, height: height) {
+            this.width = width;
+            this.height = height;
+        }
 
         protected override void Initialize()
         {
             base.Initialize();
 
             Window.AllowUserResizing = true;
-            grid = new Grid(0, 0, 0, Color.CornflowerBlue);
+
+            int gridWidth = width / SQUARE_SIZE;
+            int gridHeight = height / SQUARE_SIZE;
+
+            grid = new Grid(gridWidth, gridHeight, SQUARE_SIZE, Color.CornflowerBlue);
 
             Texture2D blueRobotTexture = grid.content.Load<Texture2D>("images/Robots/Side view/robot_blueDrive1");
             Texture2D redRobotTexture = grid.content.Load<Texture2D>("images/Robots/Side view/robot_redDrive1");
             Texture2D rocketTexture = grid.content.Load<Texture2D>("images/rocket");
 
-            Unit lenny = new Unit("Lenny", new Sprite(blueRobotTexture), 100);
-            Unit chuck = new Unit("Chuck", new Sprite(redRobotTexture), 200);
+            Unit lenny = grid.AddUnit("Lenny", blueRobotTexture, 100);
+            Unit chuck = grid.AddUnit("Chuck", redRobotTexture, 200);
 
-            Building rocket = new Building(new Sprite(rocketTexture));
+            Building rocket = grid.AddBuilding("Rocket", rocketTexture, 1, 2);
 
-            grid.addEntity(lenny);
-            grid.addEntity(chuck);
-            grid.addEntity(rocket);
-           
             chuck.position = new Vector2(200, 200);
             lenny.AddDestination(new Vector2(700, 300));
             chuck.AddDestination(new Vector2(900, 1500));
