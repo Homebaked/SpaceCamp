@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nez.Sprites;
+using Microsoft.Xna.Framework.Graphics;
+using SpaceCamp.Scenes;
 
 namespace SpaceCamp.Entities
 {
-    public class Unit : Entity
+    public class Unit : SpaceEntity
     {
         private DestinationMover mover;
 
@@ -20,9 +22,12 @@ namespace SpaceCamp.Entities
             set { mover.Speed = value; }
         }
 
-        public Unit(string name, Sprite sprite, float speed) : base(name)
+        public Unit(string name, 
+                    Texture2D texture, 
+                    float speed,
+                    Grid grid) 
+            : base(name, texture, 1, 1, grid)
         {
-            this.addComponent(sprite);
             mover = new DestinationMover();
             this.addComponent(mover);
             Speed = speed;
