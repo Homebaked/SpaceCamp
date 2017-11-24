@@ -43,6 +43,7 @@
     <Compile Include="Scenes\Grid.cs" />
     <Compile Include="Entities\Building.cs" />
     <Compile Include="UI\GridInterface.cs" />
+    <Compile Include="Entities\SpaceEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.manifest" />
