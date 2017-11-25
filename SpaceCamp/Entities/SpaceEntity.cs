@@ -29,13 +29,8 @@ namespace SpaceCamp.Entities
                                             texture.Height, 
                                             Width * squareSize, 
                                             Height * squareSize);
-            int subTextureWidth = (int)(texture.Width * scale);
-            int subTextureHeight = (int)(texture.Height * scale);
-            Rectangle rect = new Rectangle(0, 
-                                           0, 
-                                           subTextureWidth, 
-                                           subTextureHeight);
-            this.addComponent(new Sprite(new Subtexture(texture, rect)));
+            base.scale = new Vector2(scale, scale);
+            this.addComponent(new Sprite(texture));
         }
 
         private float calculateScale(int width, 
