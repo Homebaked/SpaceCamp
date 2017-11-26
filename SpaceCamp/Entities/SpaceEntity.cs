@@ -10,8 +10,21 @@ namespace SpaceCamp.Entities
 {
     public class SpaceEntity : Entity
     {
+        private readonly Sprite sprite;
+
         public int Width { get; }
         public int Height { get; }
+
+        public int PixelWidth {
+            get {
+                return (int)(sprite.width);
+            }
+        }
+        public int PixelHeight {
+            get {
+                return (int)(sprite.height);
+            }
+        }
 
         public SpaceEntity(string name, 
                            Texture2D texture, 
@@ -30,7 +43,8 @@ namespace SpaceCamp.Entities
                                             Width * squareSize, 
                                             Height * squareSize);
             base.scale = new Vector2(scale, scale);
-            this.addComponent(new Sprite(texture));
+            sprite = new Sprite(texture);
+            this.addComponent(sprite);
         }
 
         private float calculateScale(int width, 
@@ -47,7 +61,7 @@ namespace SpaceCamp.Entities
                 heightScale = (float)maxHeight / height;
             }
 
-            if (widthScale < 1 && widthScale < heightScale) {
+            if (widthScale < heightScale) {
                 return widthScale;
             }
             else 

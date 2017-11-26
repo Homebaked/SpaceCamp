@@ -30,7 +30,8 @@ namespace SpaceCamp.Components
             if (destinations.Count > 0)
             {
                 Vector2 dest = destinations[0];
-                if ((dest - position).Length() <= Speed)
+                float distance = Speed * Time.deltaTime;
+                if ((dest - position).Length() <= distance)
                 {
                     position = dest;
                     destinations.RemoveAt(0);
@@ -39,7 +40,7 @@ namespace SpaceCamp.Components
                 {
                     Vector2 direction = dest - position;
                     direction.Normalize();
-                    position += direction * Speed * Time.deltaTime;
+                    position += direction * distance;
                 }
                 entity.position = this.position;
             }

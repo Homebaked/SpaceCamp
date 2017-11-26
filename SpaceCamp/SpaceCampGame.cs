@@ -15,7 +15,7 @@ namespace SpaceCamp
     /// </summary>
     public class SpaceCampGame : Core
     {
-        private const int SQUARE_SIZE = 10;
+        private const int SQUARE_SIZE = 50;
 
         private Grid grid;
         private int width, height;
@@ -43,7 +43,7 @@ namespace SpaceCamp
             Unit lenny = grid.AddUnit("Lenny", blueRobotTexture, 100);
             Unit chuck = grid.AddUnit("Chuck", redRobotTexture, 200);
 
-            Building rocket = grid.AddBuilding("Rocket", rocketTexture, 1, 2);
+            Building rocket = grid.AddBuilding("Rocket", rocketTexture, 25, 50);
 
             chuck.position = new Vector2(200, 200);
             lenny.AddDestination(new Vector2(700, 300));
