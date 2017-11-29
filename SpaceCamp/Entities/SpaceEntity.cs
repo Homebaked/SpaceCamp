@@ -33,7 +33,7 @@ namespace SpaceCamp.Entities
                            Grid grid)
             : base(name)
         {
-            int squareSize = grid.squareSize;
+            int squareSize = grid.SquareSize;
             Width = width;
             Height = height;
 

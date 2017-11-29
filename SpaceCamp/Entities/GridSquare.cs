@@ -15,10 +15,23 @@ namespace SpaceCamp.Entities
         private readonly int squareSize;
         private readonly Drawer drawer;
 
+        public bool DrawSquare
+        {
+            get
+            {
+                return drawer.Draw;
+            }
+            set
+            {
+                drawer.Draw = value;
+            }
+        }
+
         public GridSquare(Vector2 position, int squareSize)
         {
             this.position = position;
             this.squareSize = squareSize;
+
             drawer = addComponent(new Drawer(squareSize, squareSize));
             drawer.AddDrawAction(drawSquare);
         }

@@ -11,10 +11,10 @@ namespace SpaceCamp.Components
     class Drawer : RenderableComponent
     {
         private readonly float _width, _height;
-
         private SpriteBatch spriteBatch;
-
         private readonly List<Action<SpriteBatch>> drawActions;
+
+        public bool Draw;
 
         public override float width
         {
@@ -23,7 +23,6 @@ namespace SpaceCamp.Components
                 return _width;
             }
         }
-
         public override float height
         {
             get
@@ -32,10 +31,11 @@ namespace SpaceCamp.Components
             }
         }
 
-        public Drawer(float width, float height)
+        public Drawer(float width, float height, bool draw = true)
         {
             this._width = width;
             this._height = height;
+            this.Draw = draw;
             drawActions = new List<Action<SpriteBatch>>();
         }
 
@@ -46,13 +46,16 @@ namespace SpaceCamp.Components
 
         public override void render(Graphics graphics, Camera camera)
         {
-            spriteBatch = new SpriteBatch(graphics.batcher.graphicsDevice);
-            spriteBatch.Begin();
-            foreach(Action<SpriteBatch> drawAction in drawActions)
+            if (Draw)
             {
-                drawAction(spriteBatch);
+                spriteBatch = new SpriteBatch(graphics.batcher.graphicsDevice);
+                spriteBatch.Begin();
+                foreach (Action<SpriteBatch> drawAction in drawActions)
+                {
+                    drawAction(spriteBatch);
+                }
+                spriteBatch.End();
             }
-            spriteBatch.End();
         }
     }
 }

@@ -9,29 +9,33 @@ namespace SpaceCamp.Scenes
 {
     public class Grid : Scene
     {
-        List<List<GridSquare>> squares;
-        int width, height;
+        private List<List<GridSquare>> squares;
+        private int width, height;
+        private bool draw;
 
-        public readonly int squareSize;
+        public readonly int SquareSize;
 
         public Entity selectedEntity { get; private set; }
 
-        public Grid(Graphics graphics, int width, int height, int squareSize, Color? background = null) : base() {
+        public Grid(int width, int height, int squareSize, Color? background = null, bool draw = false) : base() {
+            this.draw = draw;
+
             if (background.HasValue) { base.clearColor = background.Value; }
             base.addRenderer(new DefaultRenderer());
 
             this.width = width;
             this.height = height;
-            this.squareSize = squareSize;
+            this.SquareSize = squareSize;
 
             squares = new List<List<GridSquare>>();
             Vector2 position = new Vector2();
             for (int i = 0; i < width; i++) {
-                position.X = i * squareSize;
+                position.X = i * SquareSize;
                 List<GridSquare> column = new List<GridSquare>();
                 for (int j = 0; j < height; j++) {
-                    position.Y = j * squareSize;
-                    GridSquare square = new GridSquare(position, squareSize);
+                    position.Y = j * SquareSize;
+                    GridSquare square = new GridSquare(position, SquareSize);
+                    square.DrawSquare = draw;
                     this.addEntity(square);
                     column.Add(square);
                 }

@@ -16,11 +16,10 @@ namespace SpaceCamp
     public class SpaceCampGame : Core
     {
         private const int SQUARE_SIZE = 50;
+        private const bool DRAW_GRID = true;
 
         private Grid grid;
         private int width, height;
-
-        private Graphics graphics;
 
         public SpaceCampGame(int width, int height) : base(width: width, height: height) {
             this.width = width;
@@ -31,14 +30,12 @@ namespace SpaceCamp
         {
             base.Initialize();
 
-            graphics = Graphics.instance;
-
             Window.AllowUserResizing = true;
 
             int gridWidth = width / SQUARE_SIZE;
             int gridHeight = height / SQUARE_SIZE;
 
-            grid = new Grid(graphics, gridWidth, gridHeight, SQUARE_SIZE, Color.CornflowerBlue);
+            grid = new Grid(gridWidth, gridHeight, SQUARE_SIZE, Color.CornflowerBlue, DRAW_GRID);
 
             Texture2D blueRobotTexture = grid.content.Load<Texture2D>("images/Robots/Side view/robot_blueDrive1");
             Texture2D redRobotTexture = grid.content.Load<Texture2D>("images/Robots/Side view/robot_redDrive1");
