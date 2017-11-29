@@ -16,7 +16,7 @@ namespace SpaceCamp.Scenes
 
         public Entity selectedEntity { get; private set; }
 
-        public Grid(int width, int height, int squareSize, Color? background = null) : base() {
+        public Grid(Graphics graphics, int width, int height, int squareSize, Color? background = null) : base() {
             if (background.HasValue) { base.clearColor = background.Value; }
             base.addRenderer(new DefaultRenderer());
 
@@ -25,10 +25,15 @@ namespace SpaceCamp.Scenes
             this.squareSize = squareSize;
 
             squares = new List<List<GridSquare>>();
+            Vector2 position = new Vector2();
             for (int i = 0; i < width; i++) {
+                position.X = i * squareSize;
                 List<GridSquare> column = new List<GridSquare>();
                 for (int j = 0; j < height; j++) {
-                    column.Add(new GridSquare());
+                    position.Y = j * squareSize;
+                    GridSquare square = new GridSquare(position, squareSize);
+                    this.addEntity(square);
+                    column.Add(square);
                 }
                 squares.Add(column);
             }
@@ -46,6 +51,4 @@ namespace SpaceCamp.Scenes
             return building;
         }
     }
-
-    public struct GridSquare { };
 }

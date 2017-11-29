@@ -51,15 +51,8 @@ namespace SpaceCamp.Entities
                                      int height, 
                                      int maxWidth, 
                                      int maxHeight) {
-            float widthScale = 1, heightScale = 1;
-
-            if (width > maxWidth) {
-                widthScale = (float)maxWidth / width;
-            }
-
-            if (height > maxHeight) {
-                heightScale = (float)maxHeight / height;
-            }
+            float widthScale = (float)maxWidth / width;
+            float heightScale = (float)maxHeight / height;
 
             if (widthScale < heightScale) {
                 return widthScale;
