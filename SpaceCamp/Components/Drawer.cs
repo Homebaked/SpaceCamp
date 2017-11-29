@@ -10,12 +10,32 @@ namespace SpaceCamp.Components
 {
     class Drawer : RenderableComponent
     {
+        private readonly float _width, _height;
+
         private SpriteBatch spriteBatch;
 
         private readonly List<Action<SpriteBatch>> drawActions;
 
-        public Drawer()
+        public override float width
         {
+            get
+            {
+                return _width;
+            }
+        }
+
+        public override float height
+        {
+            get
+            {
+                return _height;
+            }
+        }
+
+        public Drawer(float width, float height)
+        {
+            this._width = width;
+            this._height = height;
             drawActions = new List<Action<SpriteBatch>>();
         }
 
@@ -27,10 +47,12 @@ namespace SpaceCamp.Components
         public override void render(Graphics graphics, Camera camera)
         {
             spriteBatch = new SpriteBatch(graphics.batcher.graphicsDevice);
+            spriteBatch.Begin();
             foreach(Action<SpriteBatch> drawAction in drawActions)
             {
                 drawAction(spriteBatch);
             }
+            spriteBatch.End();
         }
     }
 }

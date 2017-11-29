@@ -19,7 +19,7 @@ namespace SpaceCamp.Entities
         {
             this.position = position;
             this.squareSize = squareSize;
-            drawer = addComponent(new Drawer());
+            drawer = addComponent(new Drawer(squareSize, squareSize));
             drawer.AddDrawAction(drawSquare);
         }
 
