@@ -44,7 +44,7 @@ namespace SpaceCamp
             Unit lenny = grid.AddUnit("Lenny", blueRobotTexture, 100);
             Unit chuck = grid.AddUnit("Chuck", redRobotTexture, 200);
 
-            Building rocket = grid.AddBuilding("Rocket", rocketTexture, 2, 4);
+            Building rocket = grid.AddBuilding("Rocket", rocketTexture, 2, 3);
 
             chuck.position = new Vector2(200, 200);
             lenny.AddDestination(new Vector2(700, 300));
