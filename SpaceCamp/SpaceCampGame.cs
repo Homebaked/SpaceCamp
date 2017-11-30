@@ -41,14 +41,30 @@ namespace SpaceCamp
             Texture2D redRobotTexture = grid.content.Load<Texture2D>("images/Robots/Side view/robot_redDrive1");
             Texture2D rocketTexture = grid.content.Load<Texture2D>("images/rocket");
 
-            Unit lenny = grid.AddUnit("Lenny", blueRobotTexture, 100);
+            Unit lenny = grid.AddUnit("Lenny", blueRobotTexture, 200);
             Unit chuck = grid.AddUnit("Chuck", redRobotTexture, 200);
 
             Building rocket = grid.AddBuilding("Rocket", rocketTexture, 2, 3);
 
-            chuck.position = new Vector2(200, 200);
-            lenny.AddDestination(new Vector2(700, 300));
-            chuck.AddDestination(new Vector2(900, 1500));
+            lenny.position = grid.GetSquare(0, 0).GetCenter();
+            chuck.position = grid.GetSquare(5, 5).GetCenter();
+            
+            for(int i = 0; i < 5; i++)
+            {
+                lenny.AddDestination(grid.GetSquare(0, 5));
+                chuck.AddDestination(grid.GetSquare(5, 0));
+
+                lenny.AddDestination(grid.GetSquare(5, 5));
+                chuck.AddDestination(grid.GetSquare(0, 0));
+
+                lenny.AddDestination(grid.GetSquare(5, 0));
+                chuck.AddDestination(grid.GetSquare(0, 5));
+
+                lenny.AddDestination(grid.GetSquare(0, 0));
+                chuck.AddDestination(grid.GetSquare(5, 5));
+            }
+
+
             rocket.position = new Vector2(1200, 700);
 
             //UICanvas gridInterface = new GridInterface(grid);

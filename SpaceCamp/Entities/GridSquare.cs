@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SpaceCamp.Entities
 {
-    class GridSquare : Entity
+    public class GridSquare : Entity
     {
         private readonly int squareSize;
         private readonly Drawer drawer;
@@ -34,6 +34,14 @@ namespace SpaceCamp.Entities
 
             drawer = addComponent(new Drawer(squareSize, squareSize));
             drawer.AddDrawAction(drawSquare);
+        }
+
+        public Vector2 GetCenter()
+        {
+            Vector2 center = this.position;
+            center.X += squareSize / 2;
+            center.Y += squareSize / 2;
+            return center;
         }
 
         private void drawSquare(SpriteBatch batch)

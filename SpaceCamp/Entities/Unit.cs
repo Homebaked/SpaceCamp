@@ -14,7 +14,7 @@ namespace SpaceCamp.Entities
 {
     public class Unit : SpaceEntity
     {
-        private DestinationMover mover;
+        private GridMover mover;
 
         public float Speed
         {
@@ -28,12 +28,12 @@ namespace SpaceCamp.Entities
                     Grid grid) 
             : base(name, texture, 1, 1, grid)
         {
-            mover = new DestinationMover();
+            mover = new GridMover(grid);
             this.addComponent(mover);
             Speed = speed;
         }
 
-        public void AddDestination(Vector2 dest)
+        public void AddDestination(GridSquare dest)
         {
             mover.AddDestination(dest);
         }

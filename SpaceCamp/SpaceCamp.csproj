@@ -35,7 +35,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\DestinationMover.cs" />
+    <Compile Include="Components\GridMover.cs" />
     <Compile Include="Components\Drawer.cs" />
     <Compile Include="Entities\GridSquare.cs" />
     <Compile Include="Entities\Unit.cs" />

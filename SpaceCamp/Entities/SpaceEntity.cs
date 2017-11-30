@@ -15,17 +15,6 @@ namespace SpaceCamp.Entities
         public int Width { get; }
         public int Height { get; }
 
-        public int PixelWidth {
-            get {
-                return (int)(sprite.width);
-            }
-        }
-        public int PixelHeight {
-            get {
-                return (int)(sprite.height);
-            }
-        }
-
         public SpaceEntity(string name, 
                            Texture2D texture, 
                            int width, 

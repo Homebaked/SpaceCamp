@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
+using SpaceCamp.Entities;
+using SpaceCamp.Scenes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +10,22 @@ using System.Threading.Tasks;
 
 namespace SpaceCamp.Components
 {
-    public class DestinationMover : Component, IUpdatable
+    public class GridMover : Component, IUpdatable
     {
-        private List<Vector2> destinations;
+        private readonly Grid grid;
+
+        private List<GridSquare> destinations;
         private Vector2 position;
 
         public float Speed { get; set; }
 
-        public DestinationMover()
+        public GridMover(Grid grid)
         {
-            destinations = new List<Vector2>();
+            this.grid = grid;
+            destinations = new List<GridSquare>();
         }
 
-        public void AddDestination(Vector2 dest)
+        public void AddDestination(GridSquare dest)
         {
             destinations.Add(dest);
         }
@@ -29,7 +34,7 @@ namespace SpaceCamp.Components
         {
             if (destinations.Count > 0)
             {
-                Vector2 dest = destinations[0];
+                Vector2 dest = destinations[0].GetCenter();
                 float distance = Speed * Time.deltaTime;
                 if ((dest - position).Length() <= distance)
                 {

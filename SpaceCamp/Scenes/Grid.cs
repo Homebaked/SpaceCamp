@@ -43,12 +43,16 @@ namespace SpaceCamp.Scenes
             }
         }
 
+        public GridSquare GetSquare(int x, int y)
+        {
+            return squares[x][y];
+        }
+
         public Unit AddUnit(string name, Texture2D texture, float speed) {
             Unit unit = new Unit(name, texture, speed, this);
             this.addEntity(unit);
             return unit;
         }
-
         public Building AddBuilding(string name, Texture2D texture, int width, int height) {
             Building building = new Building(name, texture, width, height, this);
             this.addEntity(building);
