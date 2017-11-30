@@ -48,7 +48,10 @@ namespace SpaceCamp.Components
         {
             if (Draw)
             {
-                spriteBatch = new SpriteBatch(graphics.batcher.graphicsDevice);
+                if (spriteBatch == null)
+                {
+                    spriteBatch = new SpriteBatch(graphics.batcher.graphicsDevice);
+                }
                 spriteBatch.Begin();
                 foreach (Action<SpriteBatch> drawAction in drawActions)
                 {
